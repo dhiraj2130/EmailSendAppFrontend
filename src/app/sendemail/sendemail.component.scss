@@ -1,0 +1,26 @@
+.row {
+  color :darkolivegreen;
+  text-align: left;
+  margin-left: 63px;
+  margin-top: 10px;
+  margin-bottom :10px;
+}
+
+fieldset {
+  color : darkolivegreen;
+
+  input {
+    border-radius: 5px;
+    border-color: grey;
+  }
+  textarea {
+    border-radius: 5px;
+    border-color: grey;
+  }
+}
+.alert-danger{
+  margin: 2px 2px 5px 5px;
+  color : grey;
+
+}
+

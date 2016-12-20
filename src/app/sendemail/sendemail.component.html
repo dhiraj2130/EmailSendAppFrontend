@@ -1,0 +1,72 @@
+<header>
+  <div class="row">
+    <h3 class="col-md-4"> Enter details of email to be send </h3>
+  </div>
+</header>
+
+
+<form #EmailFormRef="ngForm" (ngSubmit)="sendEmail(EmailFormRef.value,EmailFormRef.valid)"  >
+  <fieldset ngModelGroup="emailFrom" >
+    <div class="row">
+      <label class="col-sm-2">Email From :</label>
+      <input type="email"
+             name="emailFrom" [(ngModel)]="emailModel.emailFrom"
+             #emailFromRef="ngModel" required
+             class="col-sm-3"
+      >
+    </div>
+  </fieldset>
+  <div *ngIf="emailFromRef.invalid && !emailFromRef.pristine && !EmailFormRef.submitted" class="alert alert-danger fade in ">
+    Email From is a required field
+  </div>
+
+  <fieldset ngModelGroup="emailTo" >
+    <div class="row">
+      <label class="col-md-2">Email To :</label>
+      <input type="email"
+             name="emailTo" [(ngModel)]="emailModel.emailTo"
+             #emailToRef="ngModel" required
+             class="col-md-3"
+      >
+    </div>
+  </fieldset>
+  <div *ngIf="!emailToRef.valid && !emailToRef.pristine && !EmailFormRef.submitted" class="alert alert-danger fade in ">
+    Email To is a required field
+  </div>
+
+  <fieldset ngModelGroup="emailSubject" >
+    <div class="row">
+      <label class="col-md-2">Email Subject :</label>
+      <textarea
+              name="emailSubject" [(ngModel)]="emailModel.emailSubject"
+              #emailSubjectRef="ngModel" required maxlength="100"
+              class="col-md-3"
+      ></textarea>
+    </div>
+  </fieldset>
+  <div *ngIf="!emailSubjectRef.valid && !emailSubjectRef.pristine && !EmailFormRef.submitted" class="alert alert-danger fade in ">
+    Subject is empty.
+  </div>
+
+  <fieldset ngModelGroup="emailContent" novalidate>
+    <div class="row">
+      <label class="col-md-2">Email Content :</label>
+      <textarea
+              name="emailcontent" [(ngModel)]="emailModel.emailContent"
+              #emailContentRef="ngModel" required maxlength="500"
+              class="col-md-3"
+      ></textarea>
+    </div>
+  </fieldset>
+  <div *ngIf="!emailContentRef.valid && !emailContentRef.pristine && !EmailFormRef.submitted" class="alert alert-danger fade in ">
+    No Content
+  </div>
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <!--<button  class=" col-md-1 btn btn-primary" >Reset&#45;&#45;not ready</button>-->
+    <div class="col-md-1"></div>
+    <button [disabled]="!EmailFormRef.valid" class=" col-md-1 btn btn-primary" type="submit">Send Email</button>
+  </div>
+
+</form>
