@@ -19,16 +19,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 
-  it(`should have as title 'app works!'`, async(() => {
+  it(`should have as title 'Send Email App Works!'`, async(() => {
     let fixture = TestBed.createComponent(AppComponent);
     let app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app works!');
+    expect(app.title).toEqual('Send Email App Works!');
   }));
 
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in a  tag', async(() => {
     let fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('app works!');
+    expect(compiled.querySelector('a').textContent).toContain('Send Email');
+    expect(compiled.querySelector('section').textContent).toContain('Email Send Application');
   }));
 });
