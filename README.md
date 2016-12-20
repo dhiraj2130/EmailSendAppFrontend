@@ -33,6 +33,8 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
 
 ng generate interface emailmodel
 ng generate component sendemail
+ ng g service sendEmailService
+
 
 some of validation build in UI are :
 1. All the fields are mandatory. It is though needs to be confirmed, if subject and content are to be mandatory or
