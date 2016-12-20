@@ -33,3 +33,15 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
 
 ng generate interface emailmodel
 ng generate component sendemail
+
+some of validation build in UI are :
+1. All the fields are mandatory. It is though needs to be confirmed, if subject and content are to be mandatory or
+can be left with warning. alert-warning class can be used in this case.
+2.Submit button is disabled till all fields are valid
+3.validation for email is used from html5 forms features and is reflected with submit button is presses.
+4. Max size of subject is 100 character and content is 500 character. No warning is displayed as of now, but can
+be implemented.
+
+
+4. Reset button is not yet ready
+5. send email button in navigation bar is not working.
