@@ -48,3 +48,7 @@ be implemented.
 4. Reset button is not yet ready
 5. send email button in navigation bar is not working.
 6. CORS is not implemented.
+
+
+The application can be run on other port other than 4200 but as the server is configured for CORS on http://localhost:4200,
+all the requests to server will fail
