@@ -11,12 +11,12 @@ export class SendEmailServiceService {
 
   constructor(private http:Http) { 
   }
-  private mailSendTestUrl = "http://localhost:8000/test";
+  private mailSendTestUrl = "http://localhost:8000/mail";
 
   public sendEmail(body:Object):Observable<string>{
     
     let emailBody = JSON.stringify(body);
-    //console.log(emailBody);
+    console.log(emailBody);
     //let headers = new Headers();//{'Content-Type':'application/json','Access-Control-Allow-Origin':'*'});
    // let headers = new Headers({'Access-Control-Allow-Origin':'*'});
     //headers.append('Content-Type', 'application/json');
@@ -26,7 +26,7 @@ export class SendEmailServiceService {
     
     return this.http.post(this.mailSendTestUrl,emailBody)//,options
         .map((res:Response) => res.json())
-        .catch((error:any) => Observable.throw(error.json().error || ' server error occurred'));
+        .catch((error:any) => Observable.throw(' server error occurred'));// error is lost here. need better code
     
   }
 }

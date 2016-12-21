@@ -47,3 +47,4 @@ be implemented.
 
 4. Reset button is not yet ready
 5. send email button in navigation bar is not working.
+6. CORS is not implemented.

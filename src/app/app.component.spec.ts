@@ -4,7 +4,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { SendemailComponent } from './sendemail/sendemail.component';
 import { FormsModule } from '@angular/forms';
-
+import { Emailmodel } from './emailmodel';
 import { SendEmailServiceService } from './send-email-service.service';
 
 
@@ -16,7 +16,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
-      providers : [{provide:SendEmailServiceService,useClass:mockService}],
+      providers : [{provide:SendEmailServiceService,useClass:mockService},Emailmodel],
       declarations: [
         AppComponent,SendemailComponent
       ],
@@ -24,11 +24,11 @@ describe('AppComponent', () => {
     TestBed.compileComponents();
   });
 
-  it('should create the app', async(inject([SendEmailServiceService],(_SendEmailServiceService) => {
+  it('should create the app', async(inject([SendEmailServiceService,Emailmodel],(_SendEmailServiceService,emailModel) => {
     let fixture = TestBed.createComponent(AppComponent);
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  }));
+  })));
 
   it(`should have as title 'Send Email App Works!'`, async(() => {
     let fixture = TestBed.createComponent(AppComponent);

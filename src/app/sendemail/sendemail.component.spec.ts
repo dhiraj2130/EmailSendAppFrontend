@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 //import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { SendEmailServiceService } from '../send-email-service.service';
-
+import { Emailmodel } from '../emailmodel';
 import { SendemailComponent } from './sendemail.component';
 
 class mockService {
@@ -18,7 +18,7 @@ describe('SendemailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
-      providers : [{provide:SendEmailServiceService,useClass:mockService}],
+      providers : [{provide:SendEmailServiceService,useClass:mockService},Emailmodel],
       declarations: [ SendemailComponent ]
     })
     .compileComponents();
@@ -30,7 +30,7 @@ describe('SendemailComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', inject([SendEmailServiceService],(_SendEmailServiceService) => {
+  it('should create', inject([SendEmailServiceService,Emailmodel],(_SendEmailServiceService, emailModel) => {
     expect(component).toBeTruthy();
-  });
+  }));
 });

@@ -12,27 +12,30 @@ import { SendEmailServiceService } from '../send-email-service.service';
 })
 export class SendemailComponent implements OnInit {
 
-  public emailModel:Emailmodel;
-  //sendEmailServiceService :SendEmailServiceService;
+  emailModel:Emailmodel;
+  sendEmailServiceService :SendEmailServiceService;
   //observable:Observable<string>;
-  constructor(private sendEmailServiceService :SendEmailServiceService) {}
+  constructor(private _sendEmailServiceService :SendEmailServiceService,_emailModel:Emailmodel) {
+    this.emailModel = _emailModel;
+    this.sendEmailServiceService = _sendEmailServiceService;
+  }
 
   ngOnInit() {
 
-    this.emailModel = {
-      emailTo:'',
-      emailFrom:'',
-      emailSubject:'',
-      emailContent:''
-    }
+    // this.emailModel = {
+    //   emailTo:'',
+    //   emailFrom:'',
+    //   emailSubject:'',
+    //   emailContent:''
+    // }
     //this.sendEmailServiceService = new SendEmailServiceService();
   }
   onSubmit(formValue){
-    console.log(formValue.emailTo);
+    //console.log(formValue.emailTo);
   }
-  sendEmail(emailModel:Emailmodel,isValid:boolean){
-    console.log(emailModel,isValid);
-    this.sendEmailServiceService.sendEmail(emailModel).subscribe(
+  sendEmail(isValid:boolean){
+   // console.log(emailModel,isValid);
+    this.sendEmailServiceService.sendEmail(this.emailModel).subscribe(
         stringreturnvalue =>{
           console.log(JSON.stringify(stringreturnvalue));
         },
