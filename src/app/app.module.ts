@@ -3,11 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Emailmodel } from './emailmodel';
-
+//import appRoutes from "./app.routes";
+import { RouterModule } from "@angular/router";
 
 import { AppComponent } from './app.component';
 import { SendemailComponent } from './sendemail/sendemail.component';
 import { SendEmailServiceService } from './send-email-service.service';
+
+
+const routes = [
+  {path:'home',component:AppComponent},
+   {path:'sendemail',component:SendemailComponent},
+
+];
 
 @NgModule({
   declarations: [
@@ -17,7 +25,8 @@ import { SendEmailServiceService } from './send-email-service.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes)
 
   ],
   providers: [SendEmailServiceService,Emailmodel],
