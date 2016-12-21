@@ -17,7 +17,7 @@ export class SendEmailServiceService {
 
   mailSendTestUrl:string;
 
-  public sendEmail(body:Object):Observable<string>{
+  public sendEmail(body:Object):Observable<string[]>{
     
     let emailBody = JSON.stringify(body);
     let headers = new Headers();
@@ -30,8 +30,11 @@ export class SendEmailServiceService {
     let options = new RequestOptions({headers:headers});
     
     return this.http.post(this.mailSendTestUrl,emailBody,options)
-        .map((res:Response) => res.json())
-        .catch((error:any) => Observable.throw(' server error occurred'));// error is lost here. need better code
+        .map((res:Response) => {
+          console.log( res.json());
+          res.json()
+        })
+        .catch((error:any) => Observable.throw(error));//  error is lost here. need better code
     
   }
 }

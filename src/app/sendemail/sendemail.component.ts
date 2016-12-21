@@ -14,6 +14,7 @@ export class SendemailComponent implements OnInit {
 
   emailModel:Emailmodel;
   sendEmailServiceService :SendEmailServiceService;
+  sendEmailStatus:boolean;
   //observable:Observable<string>;
   constructor(private _sendEmailServiceService :SendEmailServiceService,_emailModel:Emailmodel) {
     this.emailModel = _emailModel;
@@ -21,26 +22,18 @@ export class SendemailComponent implements OnInit {
   }
 
   ngOnInit() {
+  this.sendEmailStatus = false;
 
-    // this.emailModel = {
-    //   emailTo:'',
-    //   emailFrom:'',
-    //   emailSubject:'',
-    //   emailContent:''
-    // }
-    //this.sendEmailServiceService = new SendEmailServiceService();
   }
-  onSubmit(formValue){
-    //console.log(formValue.emailTo);
-  }
+
   sendEmail(isValid:boolean){
-   // console.log(emailModel,isValid);
+    this.sendEmailStatus = false;
     this.sendEmailServiceService.sendEmail(this.emailModel).subscribe(
         stringreturnvalue =>{
-          console.log(JSON.stringify(stringreturnvalue));
+          this.sendEmailStatus = true;
         },
         err =>{
-          console.log(err);
+         console.log("error"+err.toString());
         }
     );
   }

@@ -52,3 +52,9 @@ be implemented.
 
 The application can be run on other port other than 4200 but as the server is configured for CORS on http://localhost:4200,
 all the requests to server will fail
+
+backend api used is
+http://localhost:8000/mail
+it can be reconfigured in config folder
+
+one test case is in pending
