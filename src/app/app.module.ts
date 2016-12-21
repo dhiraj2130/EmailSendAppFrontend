@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SendemailComponent } from './sendemail/sendemail.component';
+import { SendEmailServiceService } from './send-email-service.service';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,9 @@ import { SendemailComponent } from './sendemail/sendemail.component';
     BrowserModule,
     FormsModule,
     HttpModule
+
   ],
-  providers: [],
+  providers: [SendEmailServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,14 +1,22 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { SendemailComponent } from './sendemail/sendemail.component';
 import { FormsModule } from '@angular/forms';
+
+import { SendEmailServiceService } from './send-email-service.service';
+
+
+class mockService {
+  constructor(){}
+}
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
+      providers : [{provide:SendEmailServiceService,useClass:mockService}],
       declarations: [
         AppComponent,SendemailComponent
       ],
@@ -16,7 +24,7 @@ describe('AppComponent', () => {
     TestBed.compileComponents();
   });
 
-  it('should create the app', async(() => {
+  it('should create the app', async(inject([SendEmailServiceService],(_SendEmailServiceService) => {
     let fixture = TestBed.createComponent(AppComponent);
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
