@@ -6,17 +6,19 @@ import { SendemailComponent } from './sendemail/sendemail.component';
 import { FormsModule } from '@angular/forms';
 import { Emailmodel } from './emailmodel';
 import { SendEmailServiceService } from './send-email-service.service';
-
+import { RouterTestingModule } from '@angular/router/testing';
 
 class mockService {
   constructor(){}
 }
-
 describe('AppComponent', () => {
+
+  // helpful url https://github.com/AngularClass/angular2-webpack-starter/issues/1004
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
-      providers : [{provide:SendEmailServiceService,useClass:mockService},Emailmodel],
+      imports: [ FormsModule, RouterTestingModule ],
+      providers : [{provide:SendEmailServiceService,useClass:mockService},Emailmodel,
+       ],
       declarations: [
         AppComponent,SendemailComponent
       ],

@@ -64,7 +64,7 @@
 
   <div class="row">
     <div class="col-md-2"></div>
-    <button  class=" col-md-1 btn btn-primary" >Reset&#45;&#45;not ready</button>
+    <button  class=" col-md-1 btn btn-primary" [disabled]="EmailFormRef.pristine" (click)="reset()">Reset</button>
     <div class="col-md-1"></div>
     <button [disabled]="!EmailFormRef.valid" class=" col-md-1 btn btn-primary" type="submit">Send Email</button>
   </div>
@@ -72,5 +72,8 @@
 </form>
 
 <div *ngIf="sendEmailStatus" class="alert alert-success">
-  Mail Sent Successfully
+  Mail Sent Successfully. Please send another mail or navigate to home page.
+</div>
+<div *ngIf="sendEmailStatusFailure" class="alert alert-danger">
+  Mail Send Failed.
 </div>

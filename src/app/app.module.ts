@@ -6,6 +6,7 @@ import { Emailmodel } from './emailmodel';
 //import appRoutes from "./app.routes";
 import { RouterModule } from "@angular/router";
 
+
 import { AppComponent } from './app.component';
 import { SendemailComponent } from './sendemail/sendemail.component';
 import { SendEmailServiceService } from './send-email-service.service';

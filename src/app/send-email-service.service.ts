@@ -22,8 +22,7 @@ export class SendEmailServiceService {
     let emailBody = JSON.stringify(body);
     let headers = new Headers();
 
-    this.mailSendTestUrl = api_url.mailSendTestUrl;//"http://localhost:8000/mail";
-    console.log(this.mailSendTestUrl);
+    this.mailSendTestUrl = api_url.mailSendTestUrl;
 
     headers.append('Content-Type', 'application/json');
 
@@ -31,7 +30,6 @@ export class SendEmailServiceService {
     
     return this.http.post(this.mailSendTestUrl,emailBody,options)
         .map((res:Response) => {
-          console.log( res.json());
           res.json()
         })
         .catch((error:any) => Observable.throw(error));//  error is lost here. need better code
